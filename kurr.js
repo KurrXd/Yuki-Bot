@@ -95,7 +95,6 @@ const imagi = JSON.parse(fs.readFileSync('./database/imagi.json'))
 const bad = JSON.parse(fs.readFileSync('./database/bad.json'))
 const commandsDB = JSON.parse(fs.readFileSync('./database/commands.json'))
 const tictactoe = JSON.parse(fs.readFileSync("./database/tictactoe.json"))
-const antiwame = JSON.parse(fs.readFileSync('./database/antiwame.json'));
 const antivirtex = JSON.parse(fs.readFileSync("./database/antivirtex.json"))
 const welkom = JSON.parse(fs.readFileSync('./database/welkom.json'))
 const nsfw = JSON.parse(fs.readFileSync('./database/nsfw.json'))
@@ -337,7 +336,7 @@ try {
 		const isNsfw = isGroup ? nsfw.includes(from) : false
 		const isGroupAdmins = groupAdmins.includes(sender) || false
 		const isKickArea = isGroup ? kickarea.includes(from) : false
-		const isAntiWame = isGroup ? antiwame.includes(from) : false
+		
 		 const isAntivirtex = isGroup ? antivirtex.includes(from) : false
 	
 		const isWelkom = isGroup ? welkom.includes(from) : false
@@ -1302,17 +1301,7 @@ reply(String(e))
         kurr.groupRemove(from, [kic]).catch((e) => { reply(`WKWKWK MAMPUS DI KICK🗿`) })
             }
         }
-        if (budy.includes("wa.me/","https://wa.me//","https://wa.me/")) {
-        	if (!mek.key.fromMe){
-				if (!isGroup) return
-				if (!isAntiWame) return
-				if (isGroupAdmins) return reply('Atasan grup mah bebas yakan :v')
-				kurr.updatePresence(from, Presence.composing)
-				var kic = `${sender.split("@")[0]}@s.whatsapp.net`
-				reply('Wa.me terdeteksi Auto kick!')
-			    kurr.groupRemove(from, [kic]).catch((e) => { reply(`ASIK DPT JATAH NENDANG YATIM🗿`) })
-            }
-        }
+   
            if (budy.includes("https://chat.whatsapp.com/","http://chat.whatsapp.com/")) {
         	if (!mek.key.fromMe){
 				if (!isGroup) return
@@ -1457,78 +1446,75 @@ kurr.sendMessage(from, listMsg, MessageType.listMessage, {contextInfo: { mention
  description: `Hai @${stod.split('@')[0]}\nSaya Adalah Yuki Bot`,
  sections: [
                      {
-                      "title": `SILAKAN PILIH SALAH SATU COMMAND DIBAWAH`,
+                      "title": `----PILIH COMMAND DIBAWAH----`,
  rows: [
                           {
-                              "title": "DETAIL MENU",
-                              "description": 'UNTUK MELIHAT DETAIL MENU',
+                              "title": "INFO THIS BOT",
+                              "description": '•|----Info Bot----|•',
+                              "rowId": ""
+                            
+                           },
+                           {
+                              "title": "SEWABOT",
+                              "description": '•|----Rent Bot----|•',
                               "rowId": ""
                             
                            },
                           {
-                              "title": "ownermenu",
-                              "description": 'KHUSUS OWNER BOT',
+                              "title": "GRUP OFFICIAL BOT",
+                              "description": '•|----Grup Bot----|•',
                               "rowId": ""
                             
                            },
                            {
                               "title": "groupmenu",
-                              "description": 'KHUSUS GRUP',
+                              "description": '•|----Grup Menu----|•',
                               "rowId": ""
                            },
                            {
                               "title": "downloadmenu",
-                              "description": 'TOOLS DOWNLOADER',
+                              "description": '•|----Download Menu----|•',
                               "rowId": ""
                            },
                            {
                               "title": "makermenu",
-                              "description": 'TOOLS MAKER',
+                              "description": '•|----Maker Menu----|•',
                               "rowId": ""
                            },
                            {
                            "title": "wibumenu",
-                              "description": 'FOR WIBU',
+                              "description": '•|----Wibu Menu----|•',
                               "rowId": ""
                            },
                            {
                            "title": "harammenu",
-                              "description": '18+ FITUR',
+                              "description": '•|----18+ Menu----|•',
                               "rowId": ""
                            },
                            {
                            "title": "toolsmenu",
-                              "description": 'TOOLS MENU',
+                              "description": '•|----Tools Menu----|•',
                               "rowId": ""
                            },
                            {
                            "title": "funmenu",
-                              "description": 'FOR FUN',
+                              "description": '•|----Fun Menu----|•',
                               "rowId": ""
                            },
                            {
                               "title": "gamemenu",
-                                    "description": 'GAME MENU',
+                                    "description": '•|----Game Menu----|•',
+                              "rowId": ""
+                           },
+
+                           {
+                              "title": "QRISS",
+                              "description": '•|----FOR DONATE----|•',
                               "rowId": ""
                            },
                            {
-                              "title": "runtime",
-                                    "description": 'RUNTIME THIS BOT',
-                              "rowId": ""
-                           },
-                           {
-                              "title": "info",
-                                    "description": 'INFO THIS BOT',
-                              "rowId": ""
-                           },
-                           {
-                              "title": "speed",
-                              "description": 'SPEED THIS BOT',
-                              "rowId": ""
-                           },
-                           {
-                              "title": "owner",
-                                    "description": 'OWNER THIS BOT',
+                              "title": "SCRIPT",
+                                    "description": '•|----Script This Bot----|•',
                               "rowId": ""
                            }
                            
@@ -1539,93 +1525,7 @@ kurr.sendMessage(from, listMsg, MessageType.listMessage, {contextInfo: { mention
 kurr.sendMessage(from, listMsg, MessageType.listMessage, {contextInfo: { mentionedJid: [stod]},quoted:ftrol})
 break
         	
-        	case 'detail':
-        	
-        if(menusimpel == false){               
-                const timestampi = speed();
-					const latensyi = speed() - timestampi        
-				runtime = process.uptime()				
-                nomor = 1
-                stod = `${sender}`
-       stst = await kurr.getStatus(`${sender.split('@')[0]}@c.us`)
-				stst = stst.status == 401 ? '' : stst.status
-				ini_result = await fetchJson('https://api.lolhuman.xyz/api/random/quotesnime?apikey=${lolkey}')
-     get_result = ini_result.result
-        ini_txt = `*${get_result.character} pernah berkata*\n\n`
-       ini_txt += `~${get_result.quote}`
-       
-       menu = ` ${tampilUcapan} @${sender.split("@")[0]}
-『 USER INFO 』
-       
-_ℒ⃝📑Status : ${isOwner ? 'Owner' : 'User'}_
-
-_ℒ⃝🆔Nama : ${pushname}_
-
-_ℒ⃝⛔Bio : ${stst}_
-
-_ℒ⃝📱Nomor : @${stod.split('@')[0]}_
-
-
-*❒ 「 Yuki Botzゑ  MENU 」 ❒*
-
-_書 ${prefix}ownermenu_
-
-_書 ${prefix}blmmenu_
-
-_書 ${prefix}groupmenu_
-
-_書 ${prefix}funmenu_
-
-_書 ${prefix}downloadmenu_
-
-_書 ${prefix}makermenu_
-
-_書 ${prefix}storagemenu_
-
-_書 ${prefix}toolsmenu_
-
-_書 ${prefix}wibumenu_
-
-_書 ${prefix}harammenu_
-
-_書 ${prefix}gamemenu_
-
-_書 ${prefix}othermenu_
- `
-sendButLocation(from, `${menu}`, "*_© Yuki ゑ_*", {jpegThumbnail:ofrply2,name:""}, [{buttonId:`info`,buttonText:{displayText:'INFO BOT'},type:1}], {contextInfo: { mentionedJid: [dtod,otod,stod]}})
-}
-else if(menusimpel = true){
-        stod = `${sender}`
-fill =`Ohayoo ${pushname}, ${tampilUcapan}
-Silahkan Pilih Untuk Menampilkan Menu
-
-Jika Button Tidak Muncul Ketik .allmenu`
-menu =` Yuki ゑ`
-gbutsan = [
-{buttonId:`allmenu`,buttonText:{displayText:'SHOW MENU'},type:1},
-{buttonId:`store`,buttonText:{displayText:'STORE MENU'},type:1},
-{buttonId:`script`,buttonText:{displayText:'SEWABOT'},type:1}
-]
-mhan = await kurr.prepareMessage(from, ofrply, image, {thumbnail: ofrply})
-const btnmenu = {
-imageMessage: mhan.message.imageMessage,
-contentText: `${fill}`,
-footerText: `${menu}`,
-buttons: gbutsan,
-headerType: 4
-}
-kurr.sendMessage(from, btnmenu, MessageType.buttonsMessage, {contextInfo :{text: 'hi',
-"forwardingScore": 1000000000,
-isForwarded: false,
-sendEphemeral: false,
-"externalAdreply": {
-"title": `hallo ${pushname}` ,
-"body": `${jmn} - ${week} ${weton} - ${calender}`,
-"mediaType": "2",
-"thumbnail": pporigi,
-},mentionedJid:[stod]}, quoted : ftrol})
-}
-break
+  
 case 'ownermenu':
   if (!isOwner && !mek.key.fromMe) return reply(`KHUSUS OWNER`)
         if(menusimpel == false){               
@@ -1809,7 +1709,6 @@ _書 ${prefix}promote [ _@tag_ ]_
 _書 ${prefix}demote [ _@tag_ ]_
 _書 ${prefix}antilink [ _on/off_ ]_
 _書 ${prefix}antivirtex [ _on/off_ ]_
-_書 ${prefix}antiwame [ _on/off_ ]_
 _書 ${prefix} welcome [ _on/off_ ]_____
 _書 ${prefix}creategrup [ _nama|@ta___g_ ]
 _書 ${prefix}tictactoe [ _@tag_ ]_
@@ -1817,7 +1716,6 @@ _書 ${prefix}delttt_
 _書 ${prefix}kick_
 _書 ${prefix}add_
 _書 ${prefix}getpp_
-_書 ${prefix}antiwame_
 _書 ${prefix}getdeskgc_
 _書 ${prefix}sider [ _reply pesan bot_ ]_
 _書 ${prefix}hacked [ _teks_ ]_
@@ -2997,7 +2895,7 @@ case 'jasasewa':
 
 ＰＲＩＣＥＬＩＳＴ ＨＡＲＧＡ：
 
-１５Ｋ＝ ＰＥＲＭＡＮＥＮ
+10Ｋ＝ ＰＥＲＭＡＮＥＮ
 
 
 MINAT KLIK ORDER
@@ -3687,6 +3585,14 @@ break
             }
             reply(store)
             break
+            case 'grup':
+            ini_txt = `*JOIN GC OFFICIAL*
+GC JB:
+https://chat.whatsapp.com/CtsanwTJSngHSAsyrhk6Lp
+GC BOT:
+https://chat.whatsapp.com/K8V89lh8XFDBgkkZxa59tw`
+reply(ini_txt)
+break
 		    
 case 'linkwa':
 case 'grupwa':
@@ -3964,6 +3870,7 @@ gifnya = await getBuffer('https://telegra.ph/file/a92a5a213055a6a48f023.mp4')
 anu =`${emoji2(prefix)}`
 await kurr.sendMessage(from, gifnya, MessageType.video, {mimetype : 'video/mp4', quoted: ftrol, caption: anu})
 break
+case 'script':
 case 'sc':
 reply(`SC INI:\nhttps://github.com/KurrXd/Yuki-Bot\nSC KHUSUS JUALAN:\nhttps://github.com/KurrXd/Store-Botz\nMONGGO DIPAKAI`)
 break
@@ -3990,11 +3897,16 @@ doni =`*DONATE NYA KAKA*
 ╭─❒ 「 Donasi 」 ──────*
 *│*
 *│*⬡ *Mau donasi apa cuma liat doang?*
-*│*⬡ *PULSA     : ${pulsa}*
-*│*⬡ *DANA    : ${dana}*
+*│*⬡ *PULSA     : 082298891772*
+*│*⬡ *DANA    : 081220670449*
 *│*⬡ *GOPAY    : SCAN DI ATAS AJA*
 *└───────────────────*
 Scan QR di atas bila belum premium`
+kurr.sendMessage(from, dona, image, { quoted: ftrol, thumbnail: dona, caption: doni })
+break
+case 'qriss':
+dona = fs.readFileSync('./media/donasi.jpg')
+doni =`*SCAN KAK*`
 kurr.sendMessage(from, dona, image, { quoted: ftrol, thumbnail: dona, caption: doni })
 break
 case 'pay':
@@ -4025,14 +3937,7 @@ DAN KIRIM BUKTI TF KE KONTAK TERSEBUT
  `
 sendButLocation(from, `${menu}`, "*_© STORE BOTZ ゑ_*", {jpegThumbnail:gopay,name:""}, [{buttonId:`owner`,buttonText:{displayText:'Lanjut Kirim Bukti Tf'},type:1}], {contextInfo: { mentionedJid: [dtod,otod,stod]}})
 break        
-case 'qriss':
-menu = `KAMU MEMILIH QRISS
-SCAN QR DI ATAS UNTUK
-MEMBAYAR LALU KLIK TOMBOL DI BAWAH 
-DAN KIRIM BUKTI TF KE KONTAK TERSEBUT
- `
-sendButLocation(from, `${menu}`, "*_© STORE BOTZ ゑ_*", {jpegThumbnail:qrnya,name:""}, [{buttonId:`owner`,buttonText:{displayText:'Lanjut Kirim Bukti Tf'},type:1}], {contextInfo: { mentionedJid: [dtod,otod,stod]}})
-break        
+
        case 'debug':
 
 			 res = await kurr.prepareMessageFromContent(from,{
@@ -4523,15 +4428,13 @@ case 'blackpink':
 
 
        
-       case 'tebakgambar':
-             if(isGroup)return reply(`Di Chat Pribadi Aja Om`)
+       case 'tebakgambar':            
 if (tebakgambar.hasOwnProperty(sender.split('@')[0])) return reply("Selesein yg sebelumnya dulu atuh")
   get_result = await fetchJson(`https://api.lolhuman.xyz/api/tebak/gambar?apikey=${lolkey}`)
 get_result = get_result.result
 ini_image = get_result.image
 jawaban = get_result.answer
 ini_buffer = await getBuffer(ini_image)
-kisi_kisi = jawaban.replace(/[b|c|d|f|g|h|j|k|l|m|n|p|q|r|s|t|v|w|x|y|z]/gi, '_')
 buff = await getBuffer(ini_image)
 
 kurr.sendMessage(from, ini_buffer, image, { quoted: mek, caption: 'Silahkan jawab soal berikut ini\n\nPetunjuk :tebak sendirilah kontol\nWaktu : 30s' }).then(() => {
@@ -4556,16 +4459,15 @@ displayText: `⬡ NEXT `,
 }
 gameAdd(sender, glimit)
 break
-       case 'caklontong':
-         if(isGroup)return reply(`Di Chat Pribadi Aja Om`)
+       case 'caklontong':         
               if (isGame(sender, gcount, glimit)) return reply(`Limit game kamu sudah habis`)
               if (caklontong.hasOwnProperty(sender.split('@')[0])) return reply("Masih ada soal yg belum terjawab")
               get_result = await fetchJson(`https://api.lolhuman.xyz/api/tebak/caklontong?apikey=${lolkey}`)
               get_result = get_result.result
               jawaban = get_result.answer
-              kisi_kisi = jawaban.replace(/[b|c|d|f|g|h|j|k|l|m|n|p|q|r|s|t|v|w|x|y|z]/gi, '_')
+              ini_txt = `TEBAK SNDIRI`              
               pertanyaan = get_result.question
-              kurr.sendMessage(from, '*+* ```Caklontong```\n\n *soal* :'+pertanyaan+'\n *kisi²* :'+kisi_kisi, text, { quoted: ftrol}).then(() => {
+              kurr.sendMessage(from, '*+* ```Caklontong```\n\n *soal* :'+pertanyaan+'\n *kisi²* :'+ini_txt, text, { quoted: ftrol}).then(() => {
               caklontong[sender.split('@')[0]] = jawaban.toLowerCase()
               fs.writeFileSync("./database/caklontong.json", JSON.stringify(caklontong))
 })
@@ -5209,35 +5111,7 @@ const btnasu = {
 await kurr.sendMessage(from, btnasu, MessageType.buttonsMessage, {quoted: ftrol})
 					}
 					break
-				case 'antiwame':
-				
-	        if (!isGroup) return reply(mess.only.group)
-			if (!isGroupAdmins) return reply(`Khusus Admin Om`)
-			if (!isBotGroupAdmins) return reply(`Jdiin Admin Dlu Bjir🗿`)
-					if (args[0] === 'on') {
-						if (isAntiWame) return reply('Sudah Aktif Kak')
-						antilink.push(from)
-						fs.writeFileSync('./database/antiwame.json', JSON.stringify(antilink))
-						reply('Sukses mengaktifkan fitur antiwame')
-						kurr.sendMessage(from, `ALLERT!!! Group ini sudah di pasang anti wa.me\nJika Kamu Melanggar Maka Akan Saya Tendang`, text)
-					} else if (args[0] === 'off') {
-						if (!isAntiWame) return reply('Sudah Mati Kak')
-						var ini = antilink.indexOf(from)
-						antilink.splice(ini, 1)
-						fs.writeFileSync('./database/antiwame.json', JSON.stringify(antilink))
-						reply('Sukses menonaktifkan fitur antiwame')
-					} else if (!c){
- anu =`Silahkan pilih salah satu\n\non: untuk mengaktifkan\noff: untuk menonaktifkan`
-punten = [{buttonId: 'antiwame off', buttonText: {displayText: 'OFF✖️'}, type: 1},{buttonId: 'antiwame on', buttonText: {displayText: 'ON✔️'}, type: 1}]
-const btnasu = {
-    contentText: `${anu}`,
-    footerText: '*_Yuki _*',
-    buttons: punten,
-    headerType: 1
-}
-await kurr.sendMessage(from, btnasu, MessageType.buttonsMessage, {quoted: ftrol})
-					}
-					break
+		
 				 
 					 case 'antilink':
               if (!isRegistered) return reply(`daftar dlu om ketik .verify`)

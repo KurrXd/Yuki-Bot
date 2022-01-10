@@ -54,7 +54,6 @@
     "node-tesseract-ocr": "^2.2.1",
     "os": "^0.1.1",
     "parse-ms": "^2.1.0",
-    "ping-monitor": "^0.6.2",
     "qrcode": "^1.4.4",
     "request": "^2.88.2",
     "scraper-instagram": "^1.0.17",
@@ -62,8 +61,8 @@
     "terminal-kit": "^2.1.6",
     "tiktok-scraper-without-watermark": "^1.0.6",
     "uninstall": "0.0.0",
-    "yt-search": "^2.10.2",
-    "ytsr": "^3.5.0"
+    "ytsr": "^3.5.0",
+    "yt-search": "^2.10.2"
   },
   "devDependencies": {},
   "repository": {
